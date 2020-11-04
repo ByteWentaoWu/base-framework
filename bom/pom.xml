@@ -18,10 +18,47 @@
         <knife4j-spring-ui>2.0.4</knife4j-spring-ui>
         <swagger-models>1.5.22</swagger-models>
         <springfox-swagger2>2.9.2</springfox-swagger2>
+        <mybatis-plus.version>3.3.0</mybatis-plus.version>
+        <mybatis-spring-boot-starter.version>2.0.1</mybatis-spring-boot-starter.version>
+        <sharding-sphere.version>4.0.0-RC2</sharding-sphere.version>
+        <mybatis-plus-generator.version>3.3.0</mybatis-plus-generator.version>
+        <base.farmework.version>0.0.1</base.farmework.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Base Farmework-->
+            <dependency>
+                <groupId>com.open.base.core</groupId>
+                <artifactId>base-core</artifactId>
+                <version>${base.farmework.version}</version>
+            </dependency>
+            <!-- DB -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${sharding-sphere.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-namespace</artifactId>
+                <version>${sharding-sphere.version}</version>
+            </dependency>
             <!-- SpringBoot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
