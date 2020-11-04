@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: config-center-server
+  profiles: default
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: xxx
+          username: xx
+          password: xx
+          search-paths: '{application}'
+server:
+  port: 8771
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

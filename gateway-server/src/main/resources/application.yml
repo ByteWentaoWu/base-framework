@@ -1,0 +1,38 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: gateway-server
+  profiles:
+    active: default
+  cloud:
+    gateway:
+      routes:
+      - id: base-server
+        uri: lb://base-server
+        predicates:
+        - Path=/base/**
+        filters:
+        - StripPrefix=1
+    config:
+      discovery:
+        serviceId: config-server
+        enabled: false
+      profile: default
+server:
+  port: 8080
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
