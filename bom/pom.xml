@@ -23,10 +23,17 @@
         <sharding-sphere.version>4.0.0-RC2</sharding-sphere.version>
         <mybatis-plus-generator.version>3.3.0</mybatis-plus-generator.version>
         <base.farmework.version>0.0.1</base.farmework.version>
+        <swagger-annotations.version>1.5.24</swagger-annotations.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Swagger Ui-->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
             <!-- Base Farmework-->
             <dependency>
                 <groupId>com.open.base.core</groupId>

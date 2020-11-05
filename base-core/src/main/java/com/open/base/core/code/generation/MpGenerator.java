@@ -25,9 +25,9 @@ public class MpGenerator {
      */
     public static void main(String[] args) {
 
-        String packageName = "com.open.shardingjdbc.example";
+        String packageName = "com.open.video";
         String author = "Wentao.wu";
-        String outputDir = "D:\\tmpcode\\base-framework\\example\\sharding-jdbc-example\\src\\main\\java";
+        String outputDir = "D:\\tmpcode\\base-framework\\video-server\\src\\main\\java";
         String driverName = "com.mysql.jdbc.Driver";
         String username = "root";
         String password = "123456";

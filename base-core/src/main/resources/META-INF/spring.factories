@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.ql.servicetest.ServiceTestAutoConfigure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.open.base.core.BasePackageScanningAutoConfiguration
