@@ -7,6 +7,12 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
+/**
+ * MyBatis Plus Wrapper 工具类
+ *
+ * @author Wentao.Wu
+ * @date 2020-11-05
+ */
 public class WrapperTool {
 
 
@@ -28,6 +34,25 @@ public class WrapperTool {
         return queryWrapper;
     }
 
+    private static final String EQ = "eq";
+    private static final String NE = "ne";
+    private static final String GT = "gt";
+    private static final String GE = "ge";
+    private static final String LT = "lt";
+    private static final String LE = "le";
+    private static final String LIKE = "like";
+    private static final String NOTLIKE = "notlike";
+    private static final String LEFTLIKE = "leftlike";
+    private static final String RIGHTLIKE = "rightlike";
+    private static final String IN = "in";
+    private static final String NOT_IN = "notIn";
+    private static final String IS_NULL = "isNull";
+    private static final String IS_NOT_NULL = "isNotNull";
+    private static final String ORDER_ASC = "orderAsc";
+    private static final String ORDER_DESC = "orderDesc";
+    private static final String GROUP_BY = "groupBy";
+
+
     /**
      * 构建查询 Wrapper
      * <p>
@@ -46,7 +71,7 @@ public class WrapperTool {
      * isNull	NULL 值查询
      * isNotNull	IS NOT NULL
      * orderAsc 降序
-     * orderAsc 升序
+     * orderDesc 升序
      * <p/>
      *
      * @param queryWrapper
@@ -55,48 +80,61 @@ public class WrapperTool {
      * @return
      */
     public static <T> Wrapper<T> getQueryWrapper(QueryWrapper<T> queryWrapper, WhereEntity where) {
-        if (!"groupby".equals(where.getType()) || !"orderAsc".equals(where.getType()) || !"orderDesc".equals(where.getType())) {
+        if (!GROUP_BY.equals(where.getType()) || !ORDER_ASC.equals(where.getType()) || !ORDER_DESC.equals(where.getType())
+                || !IS_NOT_NULL.equals(where.getType()) || !IS_NULL.equals(where.getType())) {
             if (where.getValue() == null || "".equals(where.getValue())) {
                 return queryWrapper;
             }
         }
         switch (where.getType()) {
-            case "eq":
+            case EQ:
                 queryWrapper.eq(where.getColumn(), where.getValue());
                 break;
-            case "ne":
+            case NE:
                 queryWrapper.ne(where.getColumn(), where.getValue());
                 break;
-            case "gt":
+            case GT:
                 queryWrapper.gt(where.getColumn(), where.getValue());
                 break;
-            case "lt":
+            case LT:
                 queryWrapper.lt(where.getColumn(), where.getValue());
                 break;
-            case "ge":
+            case GE:
                 queryWrapper.ge(where.getColumn(), where.getValue());
                 break;
-            case "le":
+            case LE:
                 queryWrapper.le(where.getColumn(), where.getValue());
-            case "like":
+            case LIKE:
                 queryWrapper.like(where.getColumn(), where.getValue());
                 break;
-            case "notlike":
+            case NOTLIKE:
                 queryWrapper.notLike(where.getColumn(), where.getValue());
                 break;
-            case "leftlike":
+            case LEFTLIKE:
                 queryWrapper.likeLeft(where.getColumn(), where.getValue());
                 break;
-            case "rightlike":
+            case RIGHTLIKE:
                 queryWrapper.likeRight(where.getColumn(), where.getValue());
                 break;
-            case "orderAsc":
+            case IN:
+                queryWrapper.in(where.getColumn(), where.getValue());
+                break;
+            case NOT_IN:
+                queryWrapper.notIn(where.getColumn(), where.getValue());
+                break;
+            case IS_NULL:
+                queryWrapper.isNull(where.getColumn());
+                break;
+            case IS_NOT_NULL:
+                queryWrapper.isNotNull(where.getColumn());
+                break;
+            case ORDER_ASC:
                 queryWrapper.orderByAsc(where.getColumn());
                 break;
-            case "orderDesc":
+            case ORDER_DESC:
                 queryWrapper.orderByDesc(where.getColumn());
                 break;
-            case "groupby":
+            case GROUP_BY:
                 queryWrapper.groupBy(where.getColumn());
                 break;
 
